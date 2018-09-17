@@ -1,0 +1,721 @@
+
+\chapter{Elementos textuais}
+
+\section{Citações}
+
+Foi definido o ambiente \ttt{citei} para citações longas com
+mais de três ($03$) linhas. Este ambiente atende as exigências das
+normas da ABNT.
+
+\begin{tcolorbox}
+\begin{lstlisting}
+\begin{citei}
+          Fragmentos do poema ``Você Aprende''
+
+   Aprende que quando está com raiva tem o direito de estar
+   com raiva, mas isso não te dá o direito de ser cruel.
+   Aprende que não importa em quantos pedaços seu coração foi
+   partido, o mundo não pára para que você o conserte.
+   Portanto, plante seu jardim e decore sua alma, ao invés de
+   esperar que alguém lhe traga flores.
+
+   \hfill William Shakespeare
+\end{citei}
+\end{lstlisting}
+depois de compilado mostra
+
+\begin{citei}
+             Fragmentos do poema ``Você Aprende''
+
+Aprende que quando está com raiva tem o direito de estar
+com raiva, mas isso não te dá o direito de ser cruel.
+Aprende que não importa em quantos pedaços seu coração foi
+partido, o mundo não pára para que você o conserte.
+Portanto, plante seu jardim e decore sua alma, ao invés de
+esperar que alguém lhe traga flores.
+
+\hfill William Shakespeare
+\end{citei}
+\end{tcolorbox}
+
+
+\section{Referência cruzada}
+
+A classe \estilo{} utiliza o mecanismo padrão do \LaTeX\ para construir referências cruzadas.
+Na seção~\ref{cruzada} encontra-se descrição e exemplos desse procedimento.
+
+\section{Cor}
+
+A classe \estilo{} aceita todos os pacotes do \LaTeX{} dedicados a
+inserção de cor em elementos do texto. Porém, dada sua versatilidade
+e potência escolheu-se o pacote \pacote{xcolor}, que é carregado assim
+\begin{center}
+	\upacoo{svgnames,table,x11names,dvipsnames,hyperref}{xcolor}
+\end{center}
+
+\section{Links} \label{links}
+O pacote \paco{hyperref} é carregado com as opções
+\begin{description}
+  \item[colorlinks:] suporte a cor em todos os
+     links criados pelo pacote \pacote{hyperref}. Seu valor padrão
+     na classe \estilo{} é \hfill \epar{colorlinks}{true}
+  \item[citecolor:] define a cor das citações inseridas com o
+     comando \comando{cite}. Seu valor padrão
+\hfill \epar{citecolor}{Navy}
+  \item[urlcolor:] Define a cor dos endereços web (páginas de internet)
+     inseridos com os comandos do \paco{hyperref} -\comando{url},
+     \comando{href}, $\ldots$. O valor padrão é \hfill \epar{urlcolor}{Navy}
+  \item[linkcolor:] Atribui cor aos ítens do sumário, da lista de
+     tabelas, da lista de figuras, às referências cruzadas e indicadores
+     de nota de rodapé. O valor padrão é \hfill  \epar{linkcolor}{Navy};
+  \item[breaklinks:] faz quebra de link de forma inteligente;
+  \item[pdfstartview=FitB:] abre o pdf em tamanho normal;
+  \item[pdfpagelabels:] define rótulos para páginas em pdf;
+  \item[linktocpage=true:] põe link no número da página no sumário, na lista
+     de tabelas e na lista de figuras;
+  \item[bookmarksopen=true:] bookmark exibido no pdf;
+  \item[bookmarksopenlevel=1:] bookmark expandido até o nível $1$;
+  \item[bookmarksnumbered=true:] bookmark enumerado;
+\end{description}
+
+O \pacote{hyperref} cria {\itshape links} e adiciona cor aos itens do
+sumário, da lista de tabelas e da lista de figuras. Também cria
+{\itshape links} para as referências cruzadas, notas de rodapé, citações,
+e muito mais, tudo isso é feito automaticamente na classe estilo.
+
+Use o comando \com{hypersetup} no preâmbulo de seu documento para
+inserir mais opções ao pacote \paco{hyperref}. Se for acrescentado o código
+\begin{tcolorbox}
+\begin{lstlisting}
+   \hypersetup{pdfpagemode=FullScreen} %%% Tela cheia - full-scream.
+\end{lstlisting}
+\end{tcolorbox}
+ao preâmbulo, sempre que o documento for compilado o pdf abrirá em
+modo de tela cheia.
+
+\section{Elementos matemáticos}
+
+Ao redigir um trabalho algumas tarefas consagram-se corriqueiras,
+neste caso é conveniente definir um comando para executá-las de
+forma mais simples e padronizá-las. A classe \estilo\ buscou
+atender algumas formas mais básicas desse tipo de demanda
+definindo ou redefinindo comandos.
+
+\subsection{Conjuntos Numéricos}
+
+Com mais ou menos intensidade, os conjuntos numéricos estão
+presentes em qualquer texto matemático e, não raro, o emprego
+de notação é mais apropriado e até imperativo. Para sua
+manipulação foram definidos na classe \estilo\ comandos
+para inserir a notação dos principais conjuntos numéricos.
+
+Todos os comandos do quadro a seguir exigem o pacote \pacote{amsfonts} da
+\emph{American Mathematical Society - AMS}.
+\begin{tcolorbox}
+	\begin{tabular}{llcl}
+	Conjunto dos números Complexos   & \verb|$\C$ ou \C| & $\longrightarrow$ &\C \\
+	Conjunto dos números Irracionais & \verb|$\I$ ou \I| & $\longrightarrow$ &\I \\
+	Conjunto dos números Naturais    & \verb|$\N$ ou \N| & $\longrightarrow$ &\N \\
+	Conjunto dos números Primos      & \verb|$\P$ ou \P| & $\longrightarrow$ &\P \\
+	Conjunto dos números Racionais   & \verb|$\Q$ ou \Q| & $\longrightarrow$ &\Q \\
+	Conjunto dos números Reais       & \verb|$\R$ ou \R| & $\longrightarrow$ &\R \\
+	Conjunto dos números Inteiros    & \verb|$\Z$ ou \Z| & $\longrightarrow$ &\Z
+	\end{tabular}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}
+	\begin{lstlisting}
+	Se $x\in\I$ então $x\notin\N,\,\,x\notin\P,\,\,x\notin\Z$
+	e $x\notin\Q$, mas $x\in\R$.
+	\end{lstlisting}
+	\tcblower
+	
+	Se $x\in\I$ então $x\notin\N,\,\,x\notin\P,\,\,x\notin\Z$ e
+	$x\notin\Q$, mas $x\in\R$.
+\end{tcolorbox}
+
+\subsection{Funções}
+
+Os comandos seguintes definem notação para algumas funções usuais
+\begin{tcolorbox}
+  \begin{tabular}{lcl}
+    \verb|$\sen{x}$ ou \sen{x}|   & $\longrightarrow$ & \sen{x} \\
+    \verb|$\Sen{x}$ ou \Sen{x}|   & $\longrightarrow$ & \Sen{x} \\
+    \verb|$\Cos{x}$ ou \Cos{x}|   & $\longrightarrow$ & \Cos{x} \\
+    \verb|$\tg{x}$ ou \tg{x}|     & $\longrightarrow$ & \tg{x}  \\
+    \verb|$\cotg{x}$ ou \cotg{x}| & $\longrightarrow$ & \cotg{x}  \\
+    \verb|$\comp{f}{g}(x)$ |      & $\longrightarrow$ & $\comp{f}{g}(x)$
+  \end{tabular}
+\end{tcolorbox}
+
+Em alternativa aos comandos do \LaTeX{} \comando{sin}, \comando{cos} e
+\comando{tan} foram definidos os comandos \comando{sen}, \comando{Cos}
+e \comando{tg}. Eles possuem um parâmetro opcional para construir
+potências e seu argumento fica entre parênteses que se ajustam
+automaticamente ao tamanho do argumento.
+\begin{tcolorbox}
+\begin{lstlisting}
+   \Sen[op]{arg.}    \Cos[op]{arg.}    \tg[op]{arg.}
+\end{lstlisting}
+\end{tcolorbox}
+Se o parâmetro opcional não for declarado a classe entende que é
+vazio, ou seja, sem potência.
+
+\begin{tcolorbox}
+\begin{lstlisting}
+\[
+   \Sen{\dfrac{2\pi x}{5}} + \tg[3]{\dfrac{2\pi x}{5}} +
+   \Cos[2]{\dfrac{2\pi x}{5}} \neq{1}
+\]
+\end{lstlisting}
+\tcblower
+\[
+\Sen{\dfrac{2\pi x}{5}} + \tg[3]{\dfrac{2\pi x}{5}} +
+\Cos[2]{\dfrac{2\pi x}{5}} \neq{1}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}	
+	\verb|\comp{f}{g}(x)\overset{=} f(g(x))| $\longrightarrow$	
+	$\comp{f}{g}(x) \overset{=} f(g(x))$
+\end{tcolorbox}
+
+\subsection{Números Naturais}
+
+Os conceitos de Mínimo Múltiplo Comum - mmc e Máximo Divisor
+Comum - mdc são utilitários a quem lida com teoria dos números.
+A classe \estilo\ oferece um comando para cada um deles:
+\begin{tcolorbox}
+	\begin{tabular}{lcl}
+		\verb|$\mmc{a,b}$ ou \mmc{a,b}|   & $\longrightarrow$ & \mmc{a,b} \\
+		\verb|$\mdc{a,b}$ ou \mdc{a,b}|   & $\longrightarrow$ & \mdc{a,b}
+	\end{tabular}
+\end{tcolorbox}
+
+\subsection{Unidades}
+
+O comando \comando{unidade} usa fonte \ttt{roman} definida pelo \comando{mathrm} e ajusta corretamente o espaço entre o número e a unidade.
+Ele funciona dentro e fora do modo matemático.
+\begin{tcolorbox}
+	\begin{tabular}{lcl}
+		\verb|$\unidade{108}{m/s}$ ou \unidade{108}{m/s}| & $\longrightarrow$ & \unidade{108}{m/s} \\
+		\verb|$\unidade{3}{N/m^2}$ ou \unidade{3}{N/m^2}| & $\longrightarrow$ & \unidade{3}{N/m^2}
+	\end{tabular}
+\end{tcolorbox}
+
+\subsection{O grau}
+O comando \com{grau} insere a notação do grau (bolinha).
+\[
+    \verb|$30\grau$|\quad \longrightarrow\quad  30\grau
+\]
+
+\subsection{Álgebra linear}
+
+Os comandos \com{vetor} e \com{veto} criam um vetor com $n-$coordenadas.
+Eles admitem dois parâmetros, um obrigatório - para atribuir
+nome ao vetor (uma letra minúscula) e um opcional - para
+especificar o número de coordenadas. O argumento opcional tem valor
+padrão $n$.
+
+
+\begin{tcolorbox}
+\begin{lstlisting}
+   \vetor[Número de coordenadas]{nome do vetor (letra)} %%% Com seta
+   \veto[Número de coordenadas]{nome do vetor (letra)}  %%% Sem seta
+\end{lstlisting}
+\tcblower
+\begin{tabular}{lcl}
+   \verb|$\vetor{u}$ ou \vetor{u}|       & $\longrightarrow $& \vetor{u}    \\
+   \verb|$\vetor[7]{u}$ ou \vetor[7]{u}| & $\longrightarrow$ & \vetor[7]{u} \\
+   \verb|$\veto{u}$ ou \veto{u}|         & $\longrightarrow$ & \veto{u}     \\
+   \verb|$\veto[13]{u}$ ou \veto[13]{u}| & $\longrightarrow$ & \veto[13]{u}
+\end{tabular}
+\end{tcolorbox}
+
+A única diferença entre os comandos \com{vetor} e \com{veto} é a seta sobre a letra que identifica o vetor.
+
+O comando \com{base} nomeia e descreve os vetores de uma base, sua sintaxe é
+\begin{center}
+\cmcc{base}{indice}{nome da base}{nome dos vetores da base}
+\end{center}
+
+\begin{tcolorbox}
+\begin{tabular}{lcl}
+   \verb|$\base{B}{u}$ ou \base{B}{u}| & $\longrightarrow $&\base{B}{u} \\
+   \verb|$\base[r]{B}{v}$ ou \base[r]{B}{v}| & $\longrightarrow$ & \base[r]{B}{v}
+\end{tabular}
+\end{tcolorbox}
+	
+O comando \com{inter} produz a notação do produto interno.
+\begin{tcolorbox}
+    \verb|\inter{x + y,z} = \inter{x,z} + \inter{y,z}|
+    \tcblower
+    \inter{x + y,z} = \inter{x,z} + \inter{y,z}
+\end{tcolorbox}
+
+O comando \com{nor} introduz a notação de norma de vetor. Havendo necessidade, o tipo de norma pode ser especificada utilizando o parâmetro opcional, o qual, por omissão, é vazio.
+\begin{tcolorbox}
+		\verb|$\nor[\infty]{x} \leq \nor[2]{x} \leq \nor[1]{x}$|  e
+		
+		\verb|$\nor{x+y} \leq \nor{x} + \nor{y}$|
+		\tcblower
+		$\nor[\infty]{x} \leq \nor[2]{x} \leq \nor[1]{x}$ \qquad e \qquad		
+		$\nor{x+y} \leq \nor{x} + \nor{y}$
+		
+\end{tcolorbox}
+
+\subsection{Empilhando símbolos}
+
+Os comandos \coma{stackrel} e \com{atop} sempre foram utilizados para empilhar coisas, mas agora
+estão obsoletos, os atuais são \com{overset} e \com{underset}, ambos do pacote amsmath, mas esses
+comandos tem uma característica que pode não ser apreciada, eles reduzem um dois símbolos que empilham
+
+\begin{tcolorbox}
+\begin{lstlisting}
+\[
+f(x) \overset{\longleftarrow}{\longrightarrow} x\ln(1+x) \e
+f(x) \underset{\longleftarrow}{\longrightarrow} x\ln(1+x)
+\]
+\end{lstlisting}
+\tcblower
+\[
+f(x) \overset{\longleftarrow}{\longrightarrow} x\ln(1+x) \e
+f(x) \underset{\longleftarrow}{\longrightarrow} x\ln(1+x)
+\]
+\end{tcolorbox}
+\begin{tcolorbox}[title={Um singelo \coma{hbox} faz muita diferença}]
+\begin{lstlisting}
+\[
+f(x) \overset{\hbox{$\longrightarrow$}}{\longrightarrow} x\ln(1+x) \e
+f(x) \underset{\hbox{$\longrightarrow$}}{\longrightarrow} x\ln(1+x)
+\]
+\end{lstlisting}
+\tcblower
+\[
+f(x) \overset{\hbox{$\longrightarrow$}}{\longrightarrow} x\ln(1+x) \e
+f(x) \underset{\hbox{$\longrightarrow$}}{\longrightarrow} x\ln(1+x)
+\]
+\end{tcolorbox}
+
+
+\begin{tcolorbox}
+\begin{lstlisting}
+\[
+   f'(x)\overset{\hbox{def.}}{=}\lim_{h \to 0}\dfrac{f(x+h)-f(x)}{h} \e
+   \overset{x>0}{\Longrightarrow} \ou A\overset{f}{\longrightarrow}B
+\]
+\end{lstlisting}
+\tcblower
+\[
+   f'(x) \overset{\hbox{def.}}{=} \lim_{h \to 0} \dfrac{f(x+h) - f(x)}{h} \e
+   \overset{x>0}{\Longrightarrow} \ou A\overset{f}{\longrightarrow}B
+\]
+\end{tcolorbox}
+
+
+
+\subsection{Soma com índices e soma com potências}
+
+O comando \com{soma} introduz a notação para uma soma
+finita com índices, por padrão, com $n$ termos, mas um
+parâmetro opcional permite alterar esse valor.
+\begin{tcolorbox}
+ \begin{tabular}{lcl}
+  \verb|$\soma{x}$ ou \soma{x}|         & $\longrightarrow$ &\soma{x}     \\
+  \verb|$\soma[m]{x}$ ou \soma[m]{x}|   & $\longrightarrow$ &\soma[m]{x}  \\
+  \verb|$\soma[29]{x}$ ou \soma[29]{x}| & $\longrightarrow$ &\soma[29]{x}
+\end{tabular}
+\end{tcolorbox}
+
+O comando \com{pot} introduz a notação para uma soma
+finita de potências, por padrão, com $n$ termos, mas um
+parâmetro opcional permite alterar esse valor.
+\begin{tcolorbox}
+ \begin{tabular}{lcl}
+  \verb|$\pot{x}$ ou \pot{x}|        & $\longrightarrow$ & \pot{x}    \\
+  \verb|$\pot[m]{x}$ ou \pot[m]{x}|  & $\longrightarrow$ & \pot[m]{x} \\
+  \verb|$\pot[29]{x}$ ou \pot[29]{x}|& $\longrightarrow$ & \pot[29]{x}
+\end{tabular}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\begin{lstlisting}
+\[
+   1+\pot{x} = \dfrac{ 1-x^{n+1} }{1-x}
+\]
+\end{lstlisting}
+\tcblower
+\[
+1+\pot{x} = \dfrac{1-x^{n+1}}{1-x}
+\]
+\end{tcolorbox}
+
+\section{Ambientes}
+
+A classe estilo utiliza o pacote \pacote{thmtools} para definir os ambientes de manipulação de entes matemáticos. Foi definido ambiente para exemplos, lemas, proposições, teoremas, corolários e definições.
+
+Todos os ambientes admitem um argumento opcional que pode ser utilizado para atribuir um nome ao teorema, 
+definição, $\ldots$. Examine os exemplos em cada subseção que segue.
+
+\subsection{Definição}
+\begin{tcolorbox}
+\begin{lstlisting}
+\begin{define}[Funcional sublinear]
+   Sejam $E$ um espaço vetorial real. Dizemos que uma função
+   $f: E \longrightarrow \R$ é um funcional sublinear se
+   \[ f(x + y) \leqslant f(x) + f(y)  \e  f(\alpha x) = \alpha f(x) \]
+   para quaisquer $x, y\in E$ e para todo $\alpha\in\R,\,\alpha\geqslant 0$.
+\end{define}
+\end{lstlisting}
+\tcblower
+\begin{define}[Funcional sublinear]
+	Sejam $E$ um espaço vetorial real. Dizemos que uma função
+	$f: E \longrightarrow \R$ é um funcional sublinear se
+	\[
+	f(x + y) \leqslant f(x) + f(y)  \e  f(\alpha x) = \alpha f(x)
+	\]
+	para quaisquer $x, y\in E$ e para todo $\alpha\in\R,\,\alpha\geqslant 0$.
+\end{define}
+\end{tcolorbox}
+
+\subsection{Lema}
+\begin{tcolorbox}
+\begin{lstlisting}
+\begin{lema}[Zorn]
+   Seja $A$ um conjunto parcialmente ordenado. Se todo subconjunto
+   totalmente ordenado de $A$ possui um limitante superior, então $A$
+   tem pelo menos um elemento maximal.
+\end{lema}
+\end{lstlisting}
+	\tcblower
+\begin{lema}[Zorn]
+	Seja $A$ um conjunto parcialmente ordenado. Se todo subconjunto
+	totalmente ordenado de $A$ possui um limitante superior, então $A$
+	tem pelo menos um elemento maximal.
+\end{lema}
+\end{tcolorbox}
+
+\subsection{Proposição}
+
+Analogamente tem-se o ambiente \ttt{prop} para proposição. Ele funciona do 
+mesmo modo que o ambiente lema. Veja um exemplo na seção~\ref{prova}.
+
+\subsection{Teorema}
+\begin{tcolorbox}[breakable]
+\begin{lstlisting}
+\begin{teorema}[Forma analítica do teorema de Hahn-Banach]
+   Sejam $E$ um espaço vetorial sobre \R, $U\subseteq E$ um subespaço vetorial e $p$ um funcional sublinear em $E$. Para todo funcional linear $f:U\longrightarrow \R$ tal que $f(x)\leqslant p(x)$ para todo $x\in U$, existe uma extensão linear de $f$, ou seja, existe um funcional linear $F:E\longrightarrow \R$ tal que
+\[ F(u)=f(u)\,\,\,\forall\,u\in U  \e  F(x)\leqslant p(x)\,\,\,
+   \forall\, x\in E.\]
+\end{teorema}
+\end{lstlisting}
+	\tcblower
+	\begin{teorema}[Forma analítica do teorema de Hahn-Banach]
+		Sejam $E$ um espaço vetorial sobre \R, $U\subseteq E$ um subespaço vetorial e $p$ um funcional sublinear em $E$. Para todo funcional linear $f:U\longrightarrow \R$ tal que $f(x)\leqslant p(x)$ para todo $x\in U$, existe uma extensão linear de $f$, ou seja, existe um funcional linear $F:E\longrightarrow \R$ tal que
+		\[
+		 F(u)=f(u)\,\,\,\forall\,u\in U  \e  F(x)\leqslant p(x)\,\,\,
+		 \forall\, x\in E.
+		\]
+	\end{teorema}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\begin{lstlisting}
+\begin{teorema}[Teorema de Hahn-Banach em espaços normados]
+   Sejam $E$ um espaço vetorial normado, $U\subseteq E$ um subespaço vetorial e $f:U\longrightarrow \R$ um funcional linear limitado. Então existe uma extensão limitada de $f$ sobre $E$ com a mesma norma de $f$, ou seja, existe um funcional linear $F:E\longrightarrow \R$ tal que
+   \[
+      F(u)=f(u)\,\,\,\forall\,u\in U  \e  \nor{F}_E=\nor{f}_U.
+   \]
+\end{teorema}
+\end{lstlisting}
+	\tcblower
+\begin{teorema}[Teorema de Hahn-Banach em espaços normados]
+	Sejam $E$ um espaço vetorial normado, $U\subseteq E$ um subespaço vetorial e $f:U\longrightarrow \R$ um funcional linear limitado. Então existe uma extensão limitada de $f$ sobre $E$ com a mesma norma de $f$, ou seja, existe um funcional linear $F:E\longrightarrow \R$ tal que
+	\[
+	   F(u)=f(u)\,\,\,\forall\,u\in U  \e  \nor[E]{F}=\nor[U]{f}.
+	\]
+\end{teorema}
+\end{tcolorbox}
+
+\subsection{Corolário}
+\begin{tcolorbox}
+\begin{lstlisting}
+\begin{coro}
+   Sejam $E$ um espaço vetorial normado e $x_0\in E,\,x_0\neq 0$. Então, existe um funcional linear limitado $f:E\longrightarrow \R$ tal que
+   \[
+      \nor{f} = 1 \e f(x_0) = \nor{x_0}
+   \]
+\end{coro}
+\end{lstlisting}
+\tcblower
+\begin{coro}
+   Sejam $E$ um espaço vetorial normado. Para todo elemento não nulo $x_0\in E$  existe um funcional linear limitado $f:E\longrightarrow \R$  tal que
+   \[
+      \nor{f} = 1 \e f(x_0) = \nor{x_0}
+   \]
+\end{coro}
+\end{tcolorbox}
+
+A menos que seja definido pelo usuário, o contador de um ambiente criado com o pacote \pacote{thmtools} recebe o mesmo nome do ambiente. Esse contadores podem ser redefinido com os comandos usais do \LaTeX.
+
+Para alterar a enumerar dos corolários de modo a começar com IV, deve-se redefinir a enumeração para algarismos romanos e 
+o contador para 3, como segue
+
+\begin{tcolorbox}
+\begin{lstlisting}
+\setcounter{coro}{3}   %%% Redefine o contador coro para 3
+\renewcommand{\thecoro}{\Roman{coro}}
+%%% Altera o contador coro para algarísmos romanos maiúsculos
+\begin{coro}
+   Sejam $E$ um espaço vetorial normado. Para todo elemento não nulo
+   $x_0\in E$  existe um funcional linear limitado $f:E\longrightarrow \R$ tal que
+   \[
+      \nor{f} = 1 \e f(x_0) = \nor{x_0}
+   \]
+\end{coro}
+\end{lstlisting}
+	\tcblower
+\setcounter{coro}{3}   %%%Redefine o contador para 3
+\renewcommand{\thecoro}{\Roman{coro}}%%% Romanos maiúsculos
+\begin{coro}
+   Sejam $E$ um espaço vetorial normado. Para todo elemento não nulo
+   $x_0\in E$  existe um funcional linear limitado $f:E\longrightarrow \R$ tal que
+   \[
+      \nor{f} = 1 \e f(x_0) = \nor{x_0}
+   \]
+\end{coro}
+\end{tcolorbox}
+
+\subsection{Prova}
+
+\begin{tcolorbox}
+\begin{lstlisting}
+\begin{prop}\label{prova}
+   No espaço $l^p$ vale a desigualdade triangular.
+\end{prop}
+\begin{prova}
+Sejam $x,y,z\in l^p$ então
+\begin{eqnarray*}
+	d(x,y)&=&\sqrt[p]{\sum_{j=1}^{\infty}|x_j-y_j|^p}\\
+	      &=&\sqrt[p]{\sum_{j=1}^{\infty}|x_j-z_j+z_j-y_j|^p}\\
+	      &\leqslant&\sqrt[p]{\sum_{j=1}^{\infty}
+	       \left(|x_j-z_j|+|z_j-y_j|\right)^p}\\
+	      &\overset{*}{\leqslant}&\sqrt[p]{\sum_{j=1}^{\infty}
+	       \left(|x_j-z_j|\right)^p}+\sqrt[p]{\sum_{j=1}^{\infty}
+	       \left|z_j-y_j|\right)^p}\\
+	      &=& d(x,z) + d(z,y)
+\end{eqnarray*}
+
+$*$ Pela desigualdade de Minkowski.
+\end{prova}
+\end{lstlisting}
+
+\tcblower
+
+\begin{prop}\label{prova}
+   No espaço $l^p$ vale a desigualdade triangular.
+\end{prop}
+\begin{prova}
+Sejam $x,y,z\in l^p$ então
+\begin{eqnarray*}
+	d(x,y)&=&\sqrt[p]{\sum_{j=1}^{\infty}|x_j-y_j|^p}\\
+	      &=&\sqrt[p]{\sum_{j=1}^{\infty}|x_j-z_j+z_j-y_j|^p}\\
+	      &\leqslant&\sqrt[p]{\sum_{j=1}^{\infty}
+	       \left(|x_j-z_j|+|z_j-y_j|\right)^p}\\
+	      &\overset{*}{\leqslant}&\sqrt[p]{\sum_{j=1}^{\infty}
+	       \left(|x_j-z_j|\right)^p}+\sqrt[p]{\sum_{j=1}^{\infty}
+	       \left|z_j-y_j|\right)^p}\\
+	      &=& d(x,z) + d(z,y)
+\end{eqnarray*}
+
+$*$ Pela desigualdade de Minkowski.
+\end{prova}
+\end{tcolorbox}
+
+\subsection{Exemplo}
+\begin{tcolorbox}
+\begin{lstlisting}
+\begin{exemplo}[hiperplanos]
+   Se $E = \rn[2]$, sabemos que todo funcional linear $f$ definido em \rn[2] pode ser escrito na forma $f(x,y) = ax + by$ para todo $(x,y)\in\rn[2]$, para algum $a,b\in\R$. Se $a^2 + b^2 \neq 0$, os hiperplanos afins de \rn[2] são da forma
+   \[
+   H =\{(x,y)\in \rn[2] \mid ax + by = \alpha\},
+   \]
+   ou seja, são as retas no plano. Para $E=\rn[3]$, os hiperplanos são da forma
+   \[
+      H =\{(x,y,z)\in \rn[2] \mid ax + by + cz= \alpha\},
+   \]
+   em que $a^2 + b^2 + c^2\neq 0$, que nada mais são do que planos no espaço.
+\end{exemplo}
+\end{lstlisting}
+\tcblower
+\begin{exemplo}[hiperplanos]
+	Se $E = \rn[2]$, sabemos que todo funcional linear $f$ definido em \rn[2] pode ser escrito na forma $f(x,y) = ax + by$ para todo $(x,y)\in\rn[2]$, para algum $a,b\in\R$. Se $a^2 + b^2 \neq 0$, os hiperplanos afins de \rn[2] são da forma
+	\[
+	H =\{(x,y)\in \rn[2] \mid ax + by = \alpha\},
+	\]
+	ou seja, são as retas no plano. Para $E=\rn[3]$, os hiperplanos são da forma
+	\[
+	H =\{(x,y,z)\in \rn[3] \mid ax + by + cz= \alpha\},
+	\]
+	em que $a^2 + b^2 + c^2\neq 0$, ou seja, são os planos no espaço.
+\end{exemplo}
+\end{tcolorbox}
+
+\subsection{Fórmulas enumeradas - ambiente equation}
+ Em algumas situações é conveniente e em outras é necessários enumerar um resultado, uma equação, desigualdade ou outros elementos. A classe estilo suporta todas as ferramentas de enumeração
+ do \LaTeX, duas delas são exemplificadas a seguir.
+\begin{tcolorbox}[title={Ambiente equation}]
+ O ambiente \verb|\[   \]| foi muito utilizados neste manual, a diferença dele para o 
+ \ttt{equation} é a numeração que o equation insere. 
+\begin{lstlisting}
+\[  H =\{(x,y)\in \rn[2] \mid ax + by = \alpha\}  \]
+\begin{equation}\label{hiper}
+   H =\{(x,y)\in \rn[2] \mid ax + by = \alpha\}
+\end{equation}
+\end{lstlisting}
+
+\tcblower
+
+\[  
+   H =\{(x,y)\in \rn[2] \mid ax + by = \alpha\}  
+\]
+\begin{equation}\label{hiper}
+   H =\{(x,y)\in \rn[2] \mid ax + by = \alpha\}
+\end{equation}
+\end{tcolorbox}
+
+O ambiente \ttt{eqnarray} enumera todas as suas equações.
+
+\begin{tcolorbox}[title={Ambiente eqnarray}]
+\begin{lstlisting}
+\begin{eqnarray}
+   H     & = & \{(x,y)\in \rn[2] \mid ax + by = \alpha\}\\ [5pt]
+   d(x,y)& = & \sqrt[p]{\sum_{j=1}^{\infty}|x_j-y_j|^p}\\
+   d(x,y)& \leq  & d(x,z) + d(z,y)
+\end{eqnarray}
+\end{lstlisting}
+
+\tcblower
+\begin{eqnarray}
+   H     & = & \{(x,y)\in \rn[2] \mid ax + by = \alpha\}\\ [5pt]
+   d(x,y)& = & \sqrt[p]{\sum_{j=1}^{\infty}|x_j-y_j|^p}\\ 
+   d(x,y)& \leq  & d(x,z) + d(z,y)
+\end{eqnarray}
+\end{tcolorbox}
+
+Se quiser retirar a numeração basta por um asterisco junto ao nome do ambiente, assim 
+\verb|eqnarray*|. Se deseja retirar a numeração de apenas uma equação comoque o comando
+\com{nonumber} na frente da equação que deseja retirar o número.
+
+\subsection{Referência cruzada}\label{cruzada}
+
+Chama-se referência cruzada aquela feita a uma parte da própria obra. Essa é uma 
+demanda comum em matemática pois em muitas situações é necessário fazer referência 
+a um resultado ou equação para justificar determinada conclusão, pode-se fazer 
+referência a uma imagem ou gráfico, a uma função dentre outros elementos.
+
+Em \LaTeX\ e na classe estilo,  todos os elementos que recebem uma numeração podem 
+receber uma referência cruzada, inclui-se ai os teoremas, corolários, definições, 
+lemas, imagens, tabelas, equações e  outros.
+
+
+O mecanismo para fazer referência cruzada é composto por dois comandos
+\begin{itemize}
+ \item \cmc{label}{marca}: este comando marca o local/elemento a ser referenciado.
+     A marca é um apelido escolhido livremente, a gosto do autor.
+ \item \cmc{ref}{marca}: faz a referência ao objeto/elemento marcado com o comando 
+     \cmc{label}{marca}. Para fazer referência a uma página utiliza-se o comando
+     \cmc{pageref}{marca}
+\end{itemize}
+
+\begin{tcolorbox}[title={Exemplo de referência cruzada}]
+   \begin{lstlisting}
+   Na página~\pageref{prova}, a proposição~\ref{prova} estabele a 
+   desigualdade triangular no conjunto $l^p$, ou seja,
+   \[
+    \sqrt[p]{\sum_{j=1}^{\infty}|x_j-y_j|^p}\leqslant
+        \sqrt[p]{\sum_{j=1}^{\infty}\left(|x_j-z_j|\right)^p}+
+        \sqrt[p]{\sum_{j=1}^{\infty}\left|z_j-y_j|\right)^p}
+   \]
+   Na página~\pageref{tab} a tabela~\ref{tab} mostra a primitiva de 
+   três funções, na página~\pageref{hiper} a equação~\ref{hiper} 
+   mostra que toda reta é um hiperplano em \rn[2] e, por fim, na 
+   página~\pageref{Esquema} a imagem~\ref{Esquema} mostra a 
+   hierarquia de várias estruturas algébricas importantes. 
+   \end{lstlisting}
+   
+   \tcblower
+   
+   Na página~\pageref{prova}, a proposição~\ref{prova} estabele a desigualdade 
+   triangular no conjunto $l^p$, ou seja,
+   \[
+    \sqrt[p]{\sum_{j=1}^{\infty}|x_j-y_j|^p}\leqslant
+        \sqrt[p]{\sum_{j=1}^{\infty}\left(|x_j-z_j|\right)^p}+
+        \sqrt[p]{\sum_{j=1}^{\infty}\left|z_j-y_j|\right)^p}
+   \]
+   Na página~\pageref{tab} a tabela~\ref{tab} mostra a primitiva de três 
+   funções elementares, na página~\pageref{hiper} a equação~\ref{hiper} 
+   mostra que toda reta é um hiperplano em \rn[2] e, por fim, na 
+   página~\pageref{Esquema} a imagem~\ref{Esquema} mostra 
+   a hierarquia de várias estruturas algébricas importantes.
+\end{tcolorbox}
+
+Observe que os códigos \verb|\pageref{prova}| e \verb|\ref{prova}| se transformaram 
+nos números da página e da propposição respectivamente, isso é a referência cruzada.
+O til antes desses comanndos impede a quebra de linha antes deles.
+
+\section{Conectivos}
+
+Com razoável frequência os conectivo "e", "ou"\,\, e "se"\,\, são
+requisitados dentro de um ambiente matemático ou modo matemático,
+locais em que os espaços são eliminados, para resolver esse problema e inserir
+esses elementos com comodidade foram definidos os comandos
+\begin{center}
+	\com{e},\,\, \com{ou}\,\, e\,\, \com{se}
+\end{center}
+
+\begin{tcolorbox}
+\begin{lstlisting}
+$\nor{f} = 1  e f(x_0) = \nor{x_0}$ %%% Obeserve o efeito do "e"
+
+$\nor{f} = 1 \e f(x_0) = \nor{x_0}$ %%% Obeserve o efeito do \e
+\end{lstlisting}
+\tcblower
+
+$\nor{f} = 1  e f(x_0) = \nor{x_0}$ {\color{estilo}$\longleftarrow$ observe o efeito do "e".}
+
+$\nor{f} = 1 \e f(x_0) = \nor{x_0}$ {\color{estilo}$\longleftarrow$ observe o efeito do \com{e}}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\begin{lstlisting}
+   \[ x\in A\cup B\Longrightarrow x\in A  ou x\in B \]	
+   \[ x\in A\cup B\Longrightarrow x\in A \ou x\in B \]
+\end{lstlisting}
+	\tcblower
+    \[ x\in A\cup B\Longrightarrow x\in A  ou x\in B \]	
+    \[ x\in A\cup B\Longrightarrow x\in A \ou x\in B \]
+\end{tcolorbox}
+
+O comando \com{se} funciona da mesma forma.
+\begin{tcolorbox}
+\begin{lstlisting}
+\[  |a| = \left\{\begin{array}{r}
+                a, \se a>0\\
+                0, \se a=0\\
+               -a, \se a<0
+             \end{array}
+         \right.
+\]
+\end{lstlisting}
+\tcblower
+\[
+|a| = \left\{\begin{array}{r}
+                a, \se a>0\\
+                0, \se a=0\\
+               -a, \se a<0
+             \end{array}
+\right.
+\]
+\end{tcolorbox} 

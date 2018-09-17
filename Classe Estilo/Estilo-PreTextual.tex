@@ -1,0 +1,279 @@
+
+\chapter{Parte pré-textual}
+
+Os comandos do capítulo~\ref{identifica} devem ficar no preâmbulo do arquivo
+\ttt{.tex}, exceto os relativos a data. Eles são usados pelos
+comandos e ambientes responsáveis pela confecção dos elementos
+da parte pré-textual, os quais seguem na mesma ordem que devem ficar no texto.
+
+\section{Capa}
+
+Prestadas as informação descritas no capítulo~\ref{identifica} basta
+inserir \com{capa} onde a capa deve ser criada, simples assim.
+
+Os comandos  \com{fontecapa} e \com{fontecapatitle} definem a fonte da capa e
+do título do trabalho na capa respectivamente. Ambos podem ser alterados com o
+\coma{reewcommand}.
+
+\section{Página de rosto}
+
+O mecanismo para criar página de rosto e capa é o mesmo, só
+muda o nome do comando, que neste caso é \com{rosto}. Como a
+página de rosto é a segunda página este comando deve vir depois
+do \com{capa}. Tem-se
+\begin{description}
+  \item[\com{Trosto}:] define a largura do texto na página de
+      rosto. Se valor padrão é $65\%$ da largura do texto. Esse
+      comando é um length e deve ser alterado da seguinte forma
+      \verb|\setlength{\Trosto}{Novo valor}|;
+  \item[\com{Lrosto}:] determina o comprimento da linha sobre
+      o nome do orientador e coorientador na página de rosto. Seu
+      valor padrão é \comando{Trosto}, ou seja, a largura do texto
+      na página de rosto. É um length e portanto deve ser alterado
+      com o comando \comando{setlength}. Por exemplo
+      \verb|\setlength{\Lrosto}{Novo valor}|;
+  \item[\com{Erosto}:] Espessura da linha sobre o nome do
+      orientador/coorientador na página de rosto. Seu valor padrão
+      é $0.7$pt. Também é um length e pode ser alterado com
+      \verb|\setlength{\Erosto}{Novo valor}|.
+\end{description}
+
+
+Os comandos \com{capa} e \com{rosto} oferecem \ttt{capa} e \ttt{folha de rosto} segundo as normas do curso de Matemática. Mas podem ser feitos outros modelos que também atendam essas regras.
+
+\section{Epígrafe}
+
+O comando \com{epigrafe} define uma epígrafe e seu autor.
+\begin{tcolorbox}
+O fragmento
+   \begin{lstlisting}
+      \epigrafe{Para os pais, filho sempre é inteligente, bonito e santo.}{Benaia Sobreira}
+   \end{lstlisting}
+\tcblower
+depois de compilado produz
+   \begin{flushright}
+ 	  {\footnotesize Para os pais, filho sempre é inteligente, bonito e santo.\hspace{0.6cm}\emph{Benaia Sobreira}}
+   \end{flushright}
+%%% Não era conveniente usar o \epigrafe aqui por que ele limpa o cabeçalho.
+%%% Mas seu efeito foi reproduzido fielmente.
+\end{tcolorbox}
+
+\section{Dedicatória}
+
+A dedicatória é opcional, sua confecção não está sujeita a normas
+estritas, assim pode ser construída livremente, mas, tenha bom senso.
+
+A classe \estilo{} oferece o ambiente \ttt{dedico} para
+construir a dedicatória. O título é centralizado e definido
+pelo comando \comando{dedi}, com fonte \verb|\caligrafica| em
+tamanho \verb|\Huge|. O \comando{dedi} pode ser redefinido com
+\comando{renewcommand}.
+\begin{tcolorbox}
+\begin{lstlisting}
+\begin{dedico}
+   Dedico esse trabalho a todos os alunos do curso de
+   Matemática que gostam e se empenham em fazer trabalhos bonitos.
+\end{dedico}
+\end{lstlisting}
+\end{tcolorbox}
+
+\section{Agradecimento}
+
+Análogo a dedicatória, substitua o ambiente \ttt{dedico} por
+\ttt{agradece} e o comando \coma{dedi} por \comando{agrada}.
+\begin{tcolorbox}
+\begin{lstlisting}
+\begin{agradece}
+   A Deus, principio e fim. A meu alunos, colaboradores dedicados,
+   pacientes e divertidos. Em particular agradeço as alunas da
+   primeira turma: Camila, Rachel, Ursula, Silvia, Rayane, $\ldots$.
+   E aos alunos: Rubens, Bruno, A Deus, princípio e fim.
+\end{agradece}
+\end{lstlisting}
+\end{tcolorbox}
+
+\section{Resumo em Língua Vernácula e Estrangeira}\label{resumo}
+O resumo em língua vernácula e estrangeira é obrigatório.
+A classe \estilo{} oferece os ambientes \ttt{resumo} e
+\ttt{resumoE}, respectivamente, para construí-los conforme
+normatização vigente.
+
+Uma lista de palavras-chave do texto deve ser incorporada ao resumo.
+Para a língua vernácula existe o comando \com{palavras} e para
+a língua estrangeira, qualquer que seja ela, \com{palavrasE}.
+\begin{tcolorbox}
+\begin{lstlisting}
+\begin{resumo}
+   A classe \estilo{} foi construída sobre a classe base report,
+   todas as opções desta foram preservadas. Suas opções padrão
+   atendem as normas do Departamento de Tecnologias e Linguagens - DTL
+   para confecção de trabalhos acadêmicos/científicos. Porém, é uma
+   classe muito flexível.
+
+   \palavras{\TeX, \LaTeX, Padronização, Beleza, Tipografia,
+   Coesão e Simplicidade}
+\end{resumo}
+\end{lstlisting}
+\end{tcolorbox}
+
+\section{Sumário}
+
+Insira o comando \com{tableofcontents} onde o sumário
+deve ser criado. Pronto! Está criado um sumário coerente, correto,
+bonito e que atende às normas da ABNT e internacionais.
+
+O \com{tableofcontents} compõe o sumário utilizando os títulos
+de capítulos, seções e subseções definidos pelos comandos \comando{chapter},
+\comando{section} e \comando{subsection} respectivamente. O
+seccionamento gerado com: \comando{chapter*}, \comando{section*}
+e \comando{subsection*} não tem seu título incluído no sumário.
+Para incluir um título avulso no nível dos capítulos pode-se usar
+\begin{tcolorbox}
+\begin{lstlisting}
+\addcontentsline{toc}{chapter}{título a ser inserido no sumário}
+\end{lstlisting}
+\end{tcolorbox}
+
+O comando \com{tableofcontents} que cria o sumário não sofreu qualquer
+alteração, por isso todos os seus elementos podem ser controlados com
+as ferramentas do koma-script. Por exemplo, a fonte do título dos
+capítulos no sumário foi estabelecida com a definição
+\begin{center}
+ \cmc{addtokomafont}{chapterentry}$\{$\verb|\normalfont\scshape\color{Navy}|$\}$
+\end{center}
+
+\section{Lista de figuras}
+
+O comando \com{listoffigures} cria uma lista de figuras, um
+sumário das figuras do documento criadas dentro de um ambiente
+figure. Nela, cada entrada corresponde a uma legenda definida
+pelo comando \com{caption}. No capítulo~\ref{imagens} existem 
+vários exemplo de como inserir imagem. Figuras sem legendas não são
+consideradas.
+
+As entradas na lista de figuras respeitam a ordem de aparição do
+\ttt{figure} no documento.  Lista de figuras e sumário recebem a 
+mesma formatação.
+
+\section{Lista de tabelas}
+
+O comando \com{listoftable} cria uma lista de tabelas, um
+sumário das tabelas do documento criadas dentro de um
+ambiente table. Nela, cada entrada corresponde a uma legenda
+definida pelo comando \com{caption}. Tabelas sem legendas
+não são consideradas.
+
+As entradas na lista de tabelas respeitam a ordem de aparição do
+\ttt{table} no documento. Lista de tabelas e sumário recebem a 
+mesma formatação.
+
+\begin{tcolorbox}[title={Exemplo de inserção de tabela}]
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $f(x)$   & $f'(x)$        &$\displaystyle\int f(x)\,dx$ \\ \hline
+    $x$      & $1$            &$\dfrac{x^{2}}{2} + c$ \\
+    $e^{x}$  & $e^{x}$        &$e^{x} + c$    \\
+    $\ln(x)$ & $\frac{1}{x}$ &$x\ln(x) - x$  \\ \hline
+  \end{tabular}
+  \caption{Integrais elementares}\label{tab}
+\end{table}
+  \[
+  \begin{array}{|c|c|c|}
+    \hline
+    f(x)   &  f'(x)       & \displaystyle\int f(x)\,dx \\[5pt] \hline
+    x      &  1           & \dfrac{x^{2}}{2} + c\\ [7pt] \hline
+    e^{x}  &  e^{x}       & e^{x} + c \\ \hline
+    \ln(x) & \frac{1}{x} & x\ln(x) - x \\ \hline
+  \end{array}
+  \]
+\tcblower
+\begin{lstlisting}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $f(x)$   & $f'(x)$        &$\displaystyle\int f(x)\,dx$ \\ \hline
+    $x$      & $1$            &$\dfrac{x^{2}}{2} + c$ \\
+    $e^{x}$  & $e^{x}$        &$e^{x} + c$    \\
+    $\ln(x)$ & $\frac{1}{x}$ &$x\ln(x) - x$  \\ \hline
+  \end{tabular}
+  \caption{Integrais elementares}\label{tab}
+\end{table}
+  \[
+  \begin{array}{|c|c|c|}
+    \hline
+    f(x)   &  f'(x)       & \displaystyle\int f(x)\,dx \\[5pt] \hline
+    x      &  1           & \dfrac{x^{2}}{2} + c\\ [7pt] \hline
+    e^{x}  &  e^{x}       & e^{x} + c \\ \hline
+    \ln(x) & \frac{1}{x} & x\ln(x) - x \\ \hline
+  \end{array}
+  \]
+\end{lstlisting}
+\end{tcolorbox}
+
+Os comandos \verb|[5pt]| e \verb|[7pt]| aumentaram em 
+5pt e 7pt o espaço entre linhas. 
+
+Como a primeira tabela está dentro de um ambiente table e tem uma legenda
+criada com o comando \com{caption}, sua legenda será uma entrada na lista
+de tabelas. A segunda tabela não tem legenda, e por isso não gera entrada 
+na lista de tabelas.
+
+Para criar uma tabela com legenda mas que não gere entrada na lista de 
+tabelas use o comando \com{caption*}.
+
+A primeira tabela foi criada com o ambiente tabular, como seus elementos são 
+entes matemáticos foi preciso colocá-los entre dolares. A segunda tabela foi
+criada com o ambiente array que aceita tanto o uso de dólares quanto aceita 
+ser posto dentro de um ambiente matemático. Veja no exemplo que a utilização 
+do ambiente \verb|\[  \]| dispensou o uso dos muitos dólares empregados na 
+construção da primeira tabela.
+
+\begin{table}[H]
+  \centering
+  \rowcolors{1}{estilo!20}{estilo!15} %%% Insere a cor nas linhas
+  \begin{tabular}{ccc}
+    $f(x)$   & $f'(x)$        &$\displaystyle\int f(x)\,dx$ \\ 
+    $x$      & $1$            &$\dfrac{x^{2}}{2} + c$ \\
+    $e^{x}$  & $e^{x}$        &$e^{x} + c$    \\
+    $\ln(x)$ & $\frac{1}{x}$  &$x\ln(x) - x$   
+  \end{tabular}
+  \caption*{Essa legenda não vai para a lista de tabelas}
+\end{table}
+  \[
+  \rowcolors{1}{Navy!20}{Navy!15} %%% Insere a cor nas linhas
+  \begin{array}{ccc}
+    f(x)   &  f'(x)       & \displaystyle\int f(x)\,dx \\[5pt] 
+    x      &  1           & \dfrac{x^{2}}{2} + c\\ [7pt] 
+    e^{x}  &  e^{x}       & e^{x} + c \\ 
+    \ln(x) & \frac{1}{x} & x\ln(x) - x 
+  \end{array}
+  \]
+\begin{lstlisting}
+\begin{table}[H]
+  \centering
+  \rowcolors{1}{estilo!20}{estilo!15} %%% Insere a cor nas linhas
+  \begin{tabular}{ccc}
+    $f(x)$   & $f'(x)$        &$\displaystyle\int f(x)\,dx$ \\ 
+    $x$      & $1$            &$\dfrac{x^{2}}{2} + c$ \\
+    $e^{x}$  & $e^{x}$        &$e^{x} + c$    \\
+    $\ln(x)$ & $\frac{1}{x}$  &$x\ln(x) - x$   
+  \end{tabular}
+  \caption*{Essa legenda não vai para alista de tabelas}
+\end{table}
+  \[
+  \rowcolors{1}{Navy!20}{Navy!15} %%% Insere a cor nas linhas
+  \begin{array}{ccc}
+    f(x)   &  f'(x)       & \displaystyle\int f(x)\,dx \\[5pt] 
+    x      &  1           & \dfrac{x^{2}}{2} + c\\ [7pt] 
+    e^{x}  &  e^{x}       & e^{x} + c \\ 
+    \ln(x) & \frac{1}{x} & x\ln(x) - x 
+  \end{array}
+  \]
+\end{lstlisting}
+
+
+
+

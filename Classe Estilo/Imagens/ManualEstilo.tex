@@ -1,0 +1,63 @@
+\documentclass[manual,palatino,fontecodigo,codigo,glenn,refnum]{Estilo}
+%%%
+%%% \KOMAoption{headsepline}{0pt} %descomente para retirar a linha do cabeçalho
+%%%
+%%%-----------------------------------------------------------------------------
+%%%
+%%% Início do documento
+%%%
+\begin{document}
+%%%
+\frontmatter %%% Necessário para os ajustes da parte pre-textual
+%%%
+%%% Capa
+%%%
+\thispagestyle{empty}
+\imagemsl{Logorural}
+
+\vspace*{6cm}
+\begin{center}
+   {
+   \scshape\huge Classe Estilo\vspace*{-0.35cm}
+   \noindent\rule{\textwidth}{3pt}
+   }
+   {
+   \Large\artemisia Trabalhos acadêmicos em \LaTeX\ de acordo com as
+   normas de formatação do curso de Matemática\vspace*{-0.35cm}
+   }
+   \noindent\rule{\textwidth}{3pt}
+\end{center}
+\vspace{6.5cm}
+
+\begin{center}
+	Benaia Sobreira de Jesus Lima\\
+	\today\\
+    \textcolor{estilo}{{\scshape Versão 1}}
+\end{center}
+%%%
+%%% Fim da capa
+%%%
+\tableofcontents    %%% Sumário
+%%%\listoffigures   %%% Lista de figuras
+%%%\listoftables    %%% Lista de tabelas
+%%%
+\input{Estilo-Introducao}
+\input{Estilo-Elementos}
+\input{Estilo-PreTextual}
+\input{Estilo-Textual}
+\input{Estilo-Imagens}
+\input{Estilo-Codigos}
+\input{Estilo-PosTextual}
+%%%
+%%%\backmatter %%% Apesar de pertencer à classe scrbook, não o use na estilo.
+%%%
+\nocite{*}  %%% insere todos os itens do arquivo .bib na lista de referências,
+            %%% independente de eles serem citados no texto.
+\addcontentsline{toc}{chapter}{Referências}  %%% Só para a opção glenn
+\renewcommand{\bibname}{Referências}         %%% Para contornar o babel.
+\bibliographystyle{unsrtnat}
+\bibliography{bibliografia}   %%% Insere o arquivo bibliografia.bib que deve
+                              %%% ficar na mesma paste de seu arquivo tex.
+\input{Estilo-Anexo-Apendice}
+
+\end{document}

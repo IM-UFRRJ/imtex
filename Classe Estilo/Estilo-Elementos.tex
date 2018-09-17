@@ -1,0 +1,489 @@
+
+\chapter{Classe Estilo: aquisição e uso}
+
+
+\section{Aquisição}
+
+Para obter a classe \estilo\ envie e-mail para
+
+\begin{center}
+	\ttt{\textcolor{estilo}{matematica.ufrrjim@gmail.com}}
+\end{center}
+e a solicite. Você receberá um e-mail resposta com o arquivo
+Estilo.rar\footnote{Esse é um arquivo compactado pelo Winrar,
+deve ser aberto pelo Winrar, winzip ou equivalentes, como
+o brazip por exemplo.} anexo, descompacte-o em  qualquer
+pasta.
+
+Ao descompactar o \ttt{Estilo.rar} você encontrará o manual (pdf) da 
+classe estilo e a pasta Monografia, essa pasta contém:
+\begin{description}
+    \item[Imagens:] pasta contendo imagens utilizadas como exemplo;
+    \item[Estilo.cls:] arquivo com todas as definições da classe \estilo;
+    \item[logotipo.tex:] utilizado para inserir a logomarca da instituição;
+    \item[Logo.png:] logomarca da UFRRJ em \ttt{.png};
+    \item[Bibliografia:] Exemplo de banco bibliográfico segundo as regras
+	    do Bib\TeX.
+    \item[MonoExemplo:] um exemplo de monografia.
+\end{description}
+
+
+% % % \section{Instalação}
+% % % 
+% % % A classe \estilo\ não exige instalação para ser utilizada,
+% % % basta colocar seu arquivo \ttt{.tex} na mesma pasta do
+% % % arquivo \estiloc. 
+% % %
+% % % Contudo, uma instalação permite que a
+% % % classe seja utilizada sem que seu arquivo .tex esteja na mesma
+% % % pasta do arquivo \estiloc.
+% % % 
+% % % A instalação consiste em fazer a classe visível ao sistema
+% % % TeX/\LaTeX, para isso abra uma pasta(com qualquer nome) no
+% % % diretório de instalação do seu sistema \TeX/\LaTeX, ponha o
+% % % arquivo \estiloc\ dentro dessa pasta e atualize o FNDB de
+% % % sua distribuição, simples assim. Se não sabe o que é FNDB
+% % % não tente instalar a classe estilo, use-a sem instalação e
+% % % esteja seguro de que não vai correr o risco de bagunçar o
+% % % seu sistema.
+
+\section{Utilização}
+
+A classe \estilo\ não exige instalação para ser utilizada,
+basta colocar seu arquivo \ttt{.tex} na mesma pasta do
+arquivo \estiloc. 
+
+A estilo foi concebida para atender satisfatoriamente o usuário com pouca ou 
+nenhuma experiência em \LaTeX. Para utilizá-la defina a primeira linha de 
+seu arquivo \ttt{.tex} da seguinte forma
+
+\begin{center}
+   \cmc{documentclass}{Estilo}
+\end{center}
+
+Assim como as classes tradicionais, a \estilo\ admite parâmetros opcionais 
+com os quais é possível alterar e/ou adicionar características e 
+funcionalidades. Esses parâmetros são as opções de classe e estão 
+descritas na seção \ref{opce}. Sua sintaxe é:
+
+\begin{center}
+	\cmco{documentclass}{opção 1, opção 2,$\ldots$}{Estilo}
+\end{center}
+
+Para compilar use os mesmos métodos utilizados com as classes nativas do \LaTeX.
+
+
+\chapter{Características da classe Estilo}
+
+
+\section{Espaço entre linhas}\label{entrelinha}
+
+Na classe \estilo\, o controle do espaço entre linhas é feito pelo pacote \paco{setspace} e o espaçamento padrão é um e meio, dado pela opção \ttt{onehalfspacing}.
+
+\section{Margens e tipo de papel}\label{margens}
+
+O controle das margens é feito com o pacote \paco{geometry}. O papel padrão na classe \estilo\ é o A$4$, definido por meio da chave a4paper. As margens e o tipo de papal são definidas pelo comando
+\begin{center}
+	\cmc{geometry}{a4paper,\epar{inner}{4cm},\epar{outer}{3cm},
+	     \epar{top}{3cm},\epar{bottom}{2cm}}
+\end{center}
+Isto quer dizer que
+\begin{multicols}{2}
+\begin{itemize}
+	\item Margem esquerda $=4$ cm
+	\item Margem direita $=3$ cm
+	\item Margem superior $=3$ cm
+	\item Margem inferior $=2$ cm
+\end{itemize}
+\end{multicols}
+
+\section{Pacotes sempre carregados}
+
+Algumas pacotes sempre são carregados pela classe \estilo, outros ficam 
+acessíveis apenas quando uma opção de classe é fornecida. Os pacotes 
+sempre carregados são os seguintes:
+\begin{description}
+   \item[\upacoo{utf8}{inputenc}:] codificação unicode, permite inserir os 
+   caracteres acentuados e ç diretamente pelo teclado.
+   \item[\upaco{geometry}:] ver~\ref{margens}.
+   \item[\upacoo{TS1,T1}{fontenc}:] condificação da fonte de saída, a codificação padrão é T1.
+   \item[\upacoo{brazil}{babel}:] traduz para português muitos termos
+        produzidos pelo \LaTeX.
+   \item[\upaco{scrhack}:] o KOMA usa seu próprio algoritmo para criar
+        ambientes flutuantes fornecidos pelo tocbasic. Portanto, pacotes
+        como float ou listings usam uma versão antiga e produzem avisos.
+        No entanto, Markus Kohm escreveu um pequeno pacote chamado scrhack
+        que corrige esse problema. Como os pacotes float e listings são carregados
+        pelas opções imagem (padrão) e codigo, foi necessário carregar esse pacote
+        na \estilo.
+   \item[\upacoo{onehalfspacing}{setspace}:] ver~\ref{entrelinha}.
+   \item[\upaco{fix-cm,etex,xspace e calc}:] pacotes técnicos e utilitários carregados sem
+   	    qualquer opção.
+   \item[\upaco{xcolor}:] suporte a cor. É carregado com as opções
+        svgnames, table, x11names, dvipsnames e hyperref.
+   \item[\upaco{microtype}:] melhorias para as fontes. É carregado com as opções
+        final,kerning,babel,protrusion=true,expansion=true e tracking=true
+   \item[\upaco{hyperref}:] utilitário, ver~\ref{links}.
+   \item[\upaco{bookmark}:] utilitário
+   \item[\upacoo{figure}{hypcap}:]  utilitário
+   \item[\upaco{caption}:] formata a legenda de figuras e tabelas criadas
+        dentro dos ambientes figure e table. É carregado com as opções
+        labelfont=$\{$small,bf,s$\}$, font=$\{$small,sf$\}$, hypcap=false.
+   \item[]\cmc{captionsetup}{\epar{justification}{centering}}: legendas de figuras e
+        tabelas centralizadas
+   \item[\upaco{subcaption}:] ajuda na formatação das legendas.
+   \item[\upaco{textcomp}:] fonte, ajustes e símbolos com o encode TS1.
+   \item[\upaco{cancel}:] simplificação (cancelamento) de expressões.
+   \item[\upaco{rotating}:] suporte para girar coisas.
+   \item[\upaco{boxedminipage}:] minipáginas com moldura
+   \item[\upaco{makeidx}:] para criar índice remissivo
+   \item[\upaco{wallpaper}:] imagem em plano de fundo
+   \item[\upaco{multicol}:] conteúdo em mais de uma coluna
+   \item[\upaco{amsmath,wasysym,amsfonts,amssymb,amstext}]
+   \item[\upaco{amsthm,fixmath}:] demandas variadas em matemática
+   \item[\upaco{thmtools}:] utilizado para definir os ambientes para teorema,
+               definição, exemplo, corolário, e outros.
+   \item[\upaco{enumitem}:] utilitário para listas, foi utilizado para definir
+               ajustes para os ambientes enumerate, itemize e description.
+   \item[\upaco{float,graphicx}:] carregados por meio da opção \op{imagem} que é padrão.
+               O float define o posicionar H e o graphicx permite inserir imagens....  
+\end{description}
+
+
+\section{Estrutura do Documento}
+
+O \LaTeX\ e a classe \estilo\ permite dividir o documento em
+parte, capítulo, seção, subseção, subsubseção e parágrafo.
+\begin{tcolorbox}
+\begin{tabular}{lcl}
+   Parte       &$\longrightarrow$& \cmc{part}{título da parte} \\
+   Capítulo    &$\longrightarrow$& \cmc{chapter}{título do capítulo} \\
+   Seção       &$\longrightarrow$& \cmc{section}{título da seção} \\
+   Subseção    &$\longrightarrow$& \cmc{subsection}{título da subseção} \\
+   Subsubseção &$\longrightarrow$& \cmc{subsubsection}{título da subsubseção}\\
+   Parágrafo   &$\longrightarrow$& \cmc{paragraph}{título do parágrafo}
+  \end{tabular}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Classe estilo: estrutura de um documento científico}]
+\begin{lstlisting}
+\documentclass{Estilo}
+
+\autor{nome do autor}
+\title{título do trabalho}
+
+\begin{document}
+   \frontmatter
+      Parte pré-textual
+   \introducao % fim da parte pré-textual. Inclui \mainmatter
+
+      Conteúdo da introdução
+
+   \ajustes % fim da introdução
+
+      Parte textual
+
+   \bibliographystyle{um estilo de bibliografia}
+   \bibliography{nome do arquivo}
+\end{document}
+\end{lstlisting}
+\end{tcolorbox}
+
+\section{Opções da classe Estilo}\label{opce}
+
+A implementação preservou todas as \op{opções} da classe base \ttt{scrbook}.
+As opções padrão atendem a todas as normas de formatação de trabalhos científicos do curso de Matemática do Departamento de Tecnologias
+e Linguagens - DTL. Além das opções da classe \ttt{scrbook} a classe \estilo\
+admite opções próprias, as quais seguem.
+
+\begin{description}
+\item[latin:] carrega \upacoo{latin1}{inputenc} e dessa forma ativa suporte à
+   codificação iso.
+\item[unicode \opp{(padrão)}:] carrega \upacoo{utf8}{inputenc} e dessa forma
+   ativa suporte à codificação unicode.
+\item[imagem \opp{(padrão)}:] essa opção carrega os pacotes \pacote{float} e
+   \pacote{graphicx} e vem ativa por padrão. Podem ser incluídas imagens
+   em todos os formatos que o \LaTeX\ aceita, tais como
+   \ttt{.png, .pdf, .jpg, .mps (METAPOST)} e outros.
+\item[licenciatura \opp{(padrão)}:] ajusta {\sffamily capa} e {\sffamily folha
+   de rosto} para uma monografia de graduação relativa a um curso de  licenciatura;
+\item[bacharel:] ajusta {\sffamily capa} e {\sffamily folha de rosto}
+   para uma monografia de graduação relativa a um curso de bacharelado;
+\item[especialista:] ajusta {\sffamily capa} e {\sffamily folha de rosto}
+   para uma monografia de curso de especialização;
+\item[mestre:] ajusta {\sffamily capa} e {\sffamily folha de rosto} para
+   uma dissertação de mestrado;
+\item[doutor:] ajusta {\sffamily capa} e {\sffamily folha de rosto} para
+   uma tese de doutorado.
+
+\item[Enumeração das páginas:] A enumeração padrão é a da classe
+    \textrm{scrbook} e não depende de nenhum pacote. A classe \estilo\
+    utiliza o pacote \paco{scrlayer-scrpage} para disponibilizar, na
+    forma de opções de classe, cinco tipos de enumeração de páginas, são elas:
+    \begin{center}
+        \ttt{sofisticada, completa, popular, popularsec, secpopular}
+    \end{center}
+     Ao utilizar uma dessas opções deve-se
+    \begin{enumerate}
+    	\item criar a introdução com o comando \com{introducao}.
+    	\item finalizar a introdução com o comando \com{ajuste}.
+    \end{enumerate}
+    Esses comandos ajustam as definições internas e asseguram enumeração correta da parte \emph{textual}.
+
+      \begin{description}
+      \item[sofisticada:] todas as páginas são contadas, mas enumeradas a partir na segunda página do sumário com enumeração no cabeçalho, que também recebe uma linha contínua. O rodapé é vazio e a primeira página dos capítulos não recebe numeração. Parte pré-textual enumerada em algarismos romanos as demais em arábicos.
+      \begin{itemize}
+      	\item se a opção \op{oneside} é carregada(impressão simples, anverso,
+      	     apenas frente) o número da página será alinhado à esquerda com o número e título do capítulo alinhados à direita.
+      	\item se a opção \op{twoside} é carregada(impressão frente e verso)
+      	     o cabeçalho das páginas ímpares terá o número da página alinhado à esquerda com número e título da seção mais próxima alinhados à direita. O cabeçalho das páginas pares terá o número da página alinhado à direita com número e título do capítulo alinhados à esquerda.
+      \end{itemize}
+      \item[completa:] difere da opção \ttt{sofisticada} somente por enumerar, também, a página inicial dos capítulos e das estruturas definidas a partir do comando \comando{chapter}, como o sumário, lista de tabelas, figuras,$\ldots$;
+      \item[popular:] todas as páginas são contadas, mas enumeradas a partir na segunda página do sumário com enumeração no cabeçalho, que também recebe uma linha contínua. O rodapé é vazio e a primeira página dos capítulos não recebe numeração. Parte pré-textual enumerada em algarismos romanos as demais em arábicos.
+      \begin{itemize}
+      	\item se a opção \op{oneside} é carregada(impressão simples, anverso,
+      	apenas frente) o número da página será alinhado à direita com o número e título do capítulo alinhados à esquerda.
+      	\item se a opção \op{twoside} é carregada(impressão frente e verso)
+      	o cabeçalho das páginas ímpares terá o número da página alinhado à direita com número e título da seção mais próxima alinhados à esquerda. O cabeçalho das páginas pares terá o número da página alinhado à esquerda com número e título do capítulo alinhados à direita.
+      \end{itemize}
+      \item[popularsec\opp{(padrão)}:] difere da opção \ttt{popular} apenas em documento para impressão simples (opção oneside). A diferença consiste em substituir, no cabeçalho, o título do capítulo pelo título da seção atual;
+      \item[secpopular:] difere da opção \ttt{sofisticada} apenas quando a opção \op{oneside} e carregada, ou seja, documento para impressão simples. Nesse caso o número da página é alinha à esquerda e o número e título da seção mais próxima alinhados à direita.
+    \end{description}
+\item[refkoma\opp{(padrão)}:] referência padrão da classe \ttt{scrbook}.
+\item[refnum:] referência numérica.
+\item[refaa:] referência autor-ano.
+\item[codigo:] carrega o pacote \pacote{listings} e suas ferramentas para 
+inserir código, veja os detalhes no capítulo~\ref{codigos}, essa opção é 
+desnecessária se for utilizada a opção \op{timesH}. A fonte padrão do código é 
+a mesma do texto mas com a família \com{ttfamily}, as opções \op{courier} e 
+\op{fontecodigo} permiter alterar e fonte do código.
+\item[courier:] carrega \upaco{courier} e deve ser usada preferencialmente em 
+conjunto com a \op{timesH} pois altera outras fontes além da fonte dos códigos. 
+\item[fontecodigo:] sem carregar \upaco{courier}, altera a fonte do código para 
+courier.
+\item[palatino:] disponibiliza as seguintes fontes
+\begin{itemize}
+	\item \upacoo{scaled=.88}{beramono} fonte Bera Monoespaçada.
+	\item \upacoo{scaled=.86}{berasans} fonte Bera sem serifa.
+	\item \upacoo{sc,osf}{mathpazo} fonte Palatino com small caps e números pequenos.
+\end{itemize}
+\item[artemisia:] \upaco{gfsartemisia-euler} fonte artemisia.
+\item[lmoder:] \upaco{lmodern,libertine} fonte lmodern + libertine (linux)
+\item[timesA:] fonte Adobe Times Roman para o corpo do texto e Avantegarde para 
+os títulos. Carrega os pacotes \upaco{mathptmx} e \upaco{avant} e utiliza  os 
+símbolos matemáticos das fontes Symbol, Chancery e Computer Modern.
+\item[timesH:] fonte Times-Helvetica-Courier com os pacotes
+\begin{itemize}
+	\item \upaco{mathptmx}
+	\item \upacoo{scaled=0.92}{helvet}
+	\item \upaco{courier}
+\end{itemize}
+\item[lsec:] essa opção muda o posicionamento dos números das seções e 
+subseções. Ative-a, compile e aprecie.
+\item[apenas:] permite a criação de apêndices sem anexos.
+
+\item[Página inicial dos capítulos:] a classe estilo disponibiliza cinco opções
+    de formatação da página inicial dos capítulos, sumério, referências, anexos e apêndices.
+    \begin{description}
+    	\item[sonny:] carrega \upacoo{Sonny}{fncychap}
+    	\item[lenny:] carrega \upacoo{Lenny}{fncychap}
+    	\item[glenn:] carrega \upacoo{Glenn}{fncychap}. Essa opção é incompatível com \epar{bibliography}{totoc} que insere a entrada das referências no sumário, quando carregadas juntas não é criado o retângulo que envolve o título das referências. Assim, quando a opção glenn é carregada a classe estilo não carrega a opção \epar{bibliography}{totoc}, por isso é necessário inserir manualmente a entrada da referências no sumário, o que é feito pondo o comando
+    	\begin{tcolorbox}
+    	\begin{lstlisting}
+    	   \addcontentsline{toc}{chapter}{Referências}
+    	\end{lstlisting}
+    	\end{tcolorbox}
+    	acima do \com{bibliographystyle}. Essa é uma peculiaridade exclusiva da opção glenn.
+    	\item[conny:] carrega \upacoo{Conny}{fncychap}
+    	\item[rejne:] carrega \upacoo{Rejne}{fncychap}
+    	\item[bjornstrup:] carrega \upacoo{Bjornstrup}{fncychap}
+    \end{description}
+\end{description}
+
+\section{Indentação}
+
+A classe \estilo\ indenta todos os parágrafos,
+inclusive o primeiro, seja ele de capítulo, seção ou subseção.
+
+\chapter{Identificação do trabalho}\label{identifica}
+
+Várias informações para identificação do trabalho, composição da
+banca examinadora, data, identificação da instituição, cidade e
+outras são requeridas para compor a versão final. Na classe \estilo,
+para cada uma dessas informações há um comando específico que deve
+ficar no preâmbulo. Se um ou mais desses comandos não for declarado
+um valor padrão é assumido ou é exibida uma mensagem avisando ao
+autor sobre o esquecimento daquela informação.
+
+\section{Instituição}
+
+\subsection{Logomarca}
+
+A classe \estilo\ constrói a capa independente da existência de
+uma logomarca. Porém, adicionando os arquivos \ttt{logotipo.tex}
+e \ttt{Logo} à mesma pasta de seu arquivo \ttt{.tex} a imagem
+contida no arquivo \ttt{Logo} será inserida sobre o nome da instituição.
+
+O arquivo \ttt{Logo} deve está em um dos formatos:
+\ttt{.ps, .eps, .png, .pdf, .jpg}. O \ttt{logotipo.tex} é distribuído
+com a classe \estilo\ e é o responsável pela inclusão e formatação da imagem.
+
+Se for necessário alterar o tamanho da imagem abra o arquivo
+\ttt{logotipo.tex}, o parâmetro \ttt{scale} controla o tamanho da
+imagem. Se \epar{scale}{2} ela dobra de tamanho, se \epar{scale}{0.5}
+é reduzida à metade.
+
+\subsection{Universidade}
+
+\cmc{universidade}{nome da instituição}: identifica a instituição em que o
+trabalho foi desenvolvido. Seu valor padrão é:
+\begin{center}
+	\ttt{Universidade Federal Rural do Rio de Janeiro}.
+\end{center}
+
+\exemplo \cmc{universidade}{Universidade Estadual de Tuntum}
+
+\subsection{Instituto}
+
+\cmc{instituto}{nome do instituto}: identifica o instituto ao qual
+pertence o departamento que abriga o curso. Seu valor padrão é:
+\begin{center}
+	\ttt{Instituto Multidisciplinar}.
+\end{center}
+
+\exemplo \cmc{instituto}{Instituto de Ciências Exatas}
+
+\subsection{Departamento}
+
+\cmc{departamento}{nome do departamento}: identifica o departamento que
+abriga o curso. Seu valor padrão é:
+\begin{center}
+	\ttt{Departamento de Tecnologias e Linguagens}.
+\end{center}
+
+\exemplo \cmc{departamento}{Departamento de Matemática Aplicada}
+
+\subsection{Curso}
+
+\cmc{curso}{nome do curso}: identifica o curso. Seu valor padrão é: \ttt{Matemática}.
+
+\exemplo \cmc{curso}{Matemática Aplicada e Computacional}
+
+\section{O trabalho}
+
+\subsection{Título do trabalho}
+
+\cmc{title}{título do trabalho}: especifica o título do trabalho.
+
+Esse comando não tem valor padrão, se não for definido será
+exibida a mensagem ``\emph{Você não definiu. Defina!}''.
+
+\exemplo \cmc{title}{Zero - O Nada que Existe}
+
+\subsection{Autor}
+
+\cmc{autor}{nome do autor}: define o autor do trabalho. Não tem valor padrão
+
+\exemplo \cmc{autor}{Masha Rostova}
+
+\subsection{Gênero}
+
+\cmc{grauL}{Licenciado ou Licenciada}: para que o autor possa escolher o gênero que deseja que 
+conste em sua nmonografia foi definido o comando \com{grauL}. Seu valor padrão é ``\textit{Licenciada}'' por 
+que as mulheres são maioria no curso de Matemática. Para alterar seu valor ``\textit{Licenciado}'' acrescente 
+\verb|\grauL{Licenciado}| ao preâmbulo de sua monografia. 
+
+\exemplo \cmc{autor}{Masha Rostova}
+
+\grauL{Licenciado}
+
+\subsection{Orientador(a) e Co-orientador(a)}
+
+Existem quatro comandos para definir o orientador(a), são eles
+\begin{itemize}
+   \item \cmc{orientador}{Aleksandro de Melo}: orientador doutor
+   \item \cmc{orientador[m]}{Susan Wouters}: orientadora doutora
+   \item \cmc{orientadorm}{Benaia Sobreira de Jesus Lima}: orientador mestre
+   \item \cmc{orientadorm[m]}{Katarina Rostova}: orientadora mestre
+\end{itemize}
+Naturalmente não há valor padrão.
+
+
+Quando existir co-orientador(a) seu nome será inserido abaixo do nome
+do orientador(a). Não havendo, a classe ajusta a distribuição dos
+elementos da folha de rosto para evitar que o campo reservado a(o)
+co-orientador(a) fique vazio.
+
+Os comandos para co-orientação são obtidos a partir dos comandos
+para orientação, simplesmente os precedendo por ``co''. Por exemplo,
+quem tem uma co-orientadora mestre o comando é:
+
+\exemplo\cmc{coorientadorm[m]}{Katarina Rostova}
+
+\subsection{Programa}
+
+\cmc{programa}{nome do programa}: define o programa de pós-graduação
+ao qual pertence o mestrado/doutorado cursado. Esse comando não possui 
+valor padrão e só está definido para as opções de classe mestre e doutor.
+
+\exemplo\cmc{programa}{Matemática Aplicada e Computacional}
+
+\subsection{Diploma}
+
+\cmc{diploma}{nome da área da titulação}: define a área da titulação.
+Esse comando não possui valor padrão e só está definido para as opções de classe mestre e doutor.
+
+\exemplo\cmc{diploma}{Biomatemática}
+
+\section{Local e data}
+
+\subsection{Estado}
+
+\cmc{estado}{sigla}: define a sigla do estado da instituição.
+Seu valor padrão é: \ttt{RJ}.
+
+\exemplo\cmc{estado}{MA}
+
+\subsection{Cidade}
+
+\cmc{cidade}{nome da cidade}: identifica a cidade onde fica a instituição ou campus em que o autor estudou. Seu valor padrão é: \ttt{Nova Iguaçu}.
+
+\exemplo\cmc{cidade}{Petrópolis}
+
+\subsection{Data}
+
+Para facilitar a manipulação de datas foram definidos os
+seguintes comandos:
+
+\begin{description}
+ \item[\comando{data}:] Imprime o nome da cidade definida pelo
+     comando \coma{cidade}, seguido do dia da compilação(\emph{número}),
+     seguido pelo mês(\emph{por extenso}) e ano (\emph{número}) respectivamente;
+ \item[\comando{today}(comando do \LaTeX):] Imprime o dia da compilação(\emph{número}),
+     seguido pelo mês(\emph{por extenso}) e ano (\emph{número})
+     respectivamente;
+ \item[\comando{dia}:] Imprime o dia da compilação(\emph{número});
+ \item[\comando{mes}:] Imprime o mês da compilação(\emph{número});
+ \item[\comando{mesn}:] Imprime o mês da compilação(\emph{nome});
+ \item[\comando{ano}:] Imprime o ano da compilação(\emph{número});
+\end{description}
+
+\begin{tcolorbox}
+\begin{tabular}{ll}
+   Comando     & Efeito produzido \\
+   \com{data}  & \data            \\
+   \com{today} & \today           \\
+   \com{dia}   & \dia             \\
+   \com{mes}   & \mes             \\
+   \com{mesn}  & \mesn            \\
+   \com{ano}   & \ano
+\end{tabular}
+\end{tcolorbox}
+
+Todos esses comandos usam a data da compilação.
+
+\section{Data da defesa}
+
+\cmc{grandedia}{data da defesa}: define o dia da defesa, apresentação pública, do trabalho. Seu valor padrão é \coma{data} que corresponde à data de compilação do documento.
+
+\exemplo \cmc{grandedia}{25 de agosto de 2018}  
